@@ -118,7 +118,10 @@ if butt:
     elif brand == "RedmiBook":
         img = image.imread(RedmiBook)
         st.image(img)
-   
+    query = np.array([brand, processor, ram, os, Storage])
+    query = query.reshape(1, -1)
+    p = pipe.predict(query)[0]
+    result = np.exp(p)
    
    
     st.subheader("Your Predicted Prize is: ")
